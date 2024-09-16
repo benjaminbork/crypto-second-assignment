@@ -13,6 +13,9 @@ module.exports = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
       },
+      colors: {
+        cyan: require('tailwindcss/colors').cyan,
+      },
     },
   },
   darkMode: "class",
