@@ -1,8 +1,11 @@
-import { title } from "@/components/primitives";
+import { subtitle, title } from '@/components/primitives'
 import { PadlockIcon } from "@/components/icons";
 import {Spacer} from "@nextui-org/spacer";
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Avatar } from '@nextui-org/avatar'
+import { Accordion, AccordionItem } from '@nextui-org/accordion'
+import { Image } from '@nextui-org/image'
+import { Divider } from '@nextui-org/divider'
 
 export default function Home() {
   return (
@@ -87,7 +90,58 @@ export default function Home() {
         </Card>
       </div>
 
-      <div className="flex gap-3">
+      <Spacer y={10} />
+
+      <h1 className={title()}>Why us?</h1>
+      <p>
+        <span className='text-inherit text-2xl'>Because we are </span>
+        <span className='text-2xl' style={{ color: 'cyan' }}>FREE</span>
+        <span className='text-inherit text-2xl'>, </span>
+        <span className='text-2xl' style={{ color: 'cyan' }}>FAST </span>
+        <span className='text-inherit text-2xl'>and </span>
+        <span className='text-2xl' style={{ color: 'cyan' }}>EASY</span>
+      </p>
+
+      <Divider className='mt-14 mb-20' />
+
+      <h1 className={title()}>Our Team</h1>
+
+      <div className='mt-8 flex gap-3'>
+
+        <Card className="py-4">
+          <CardHeader className="overflow-visible py-2">
+            <Image
+              height={200}
+              radius='none'
+              alt='DOGCRYPT Logo'
+              src='/logo-dogcrypt.png'
+            />
+          </CardHeader>
+          <CardBody className='pb-0 pt-2 px-4 flex-col items-center'>
+            <h4 className='font-bold text-large'>Benjamin Bork</h4>
+            <p className='text-tiny uppercase font-bold'>Founder</p>
+            <small className='text-default-500'>Coding &
+              Software-engineering</small>
+          </CardBody>
+        </Card>
+
+        <Spacer x={4} />
+
+        <Card className="py-4">
+          <CardHeader className="overflow-visible py-0">
+            <Image
+              width={300}
+              alt='Danny Kukic'
+              src='/danny.jpg'
+            />
+          </CardHeader>
+          <CardBody className='pb-0 pt-2 px-4 flex-col items-center'>
+            <h4 className='font-bold text-large'>Danny Kukic</h4>
+            <p className='text-tiny uppercase font-bold'>Founder</p>
+            <small className='text-default-500'>Coding &
+              Software-engineering</small>
+          </CardBody>
+        </Card>
 
       </div>
 
@@ -95,5 +149,5 @@ export default function Home() {
     </section>
 
 
-);
+  );
 }
