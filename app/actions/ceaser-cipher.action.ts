@@ -1,15 +1,19 @@
-const checkIsUnicodePartOfAlphabet = (code: number): boolean => {
-  return (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
-};
-const checkIsUnicodePartOfUpperCaseAlphabet = (code: number): boolean => {
-  return code >= 65 && code <= 90;
-};
+import {
+  checkIsUnicodePartOfAlphabet,
+  checkIsUnicodePartOfUpperCaseAlphabet,
+} from "../../utils/cipher";
 
 const shiftUnicode = (code: number, shift: number, base: number): number => {
   return ((code - base - shift + 26) % 26) + base;
 };
 
-export const decrypt = (text: string, shift: number): string => {
+export const decrypt = ({
+  text,
+  shift,
+}: {
+  text: string;
+  shift: number;
+}): string => {
   return text
     .split("")
     .map((char) => {
@@ -23,7 +27,13 @@ export const decrypt = (text: string, shift: number): string => {
     .join("");
 };
 
-export const encrypt = (text: string, shift: number): string => {
+export const encrypt = ({
+  text,
+  shift,
+}: {
+  text: string;
+  shift: number;
+}): string => {
   return text
     .split("")
     .map((char) => {

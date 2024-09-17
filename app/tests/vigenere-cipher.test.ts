@@ -1,24 +1,24 @@
-import { decrypt, encrypt } from "../actions/ceaser-cipher.action";
+import { decrypt, encrypt } from "../actions/vigenere-cipher.action";
 
-describe("ceaser-cipher", () => {
+describe("vigenere-cipher", () => {
   test("decrypt-success", () => {
-    const encryptedText = "wklv lv d whvw phvvdjh";
-    const shift = 3;
+    const encryptedText = "vvnx mw c hjxx qggxfki";
+    const key = "coffee";
 
     const decryptedText = decrypt({
       text: encryptedText,
-      shift,
+      key,
     });
     expect(decryptedText).toBe("this is a test message");
   });
   test("encrypt-success", () => {
     const text = "this is a test message";
-    const shift = 3;
+    const key = "coffee";
 
     const encryptedText = encrypt({
       text,
-      shift,
+      key,
     });
-    expect(encryptedText).toBe("wklv lv d whvw phvvdjh");
+    expect(encryptedText).toBe("vvnx mw c hjxx qggxfki");
   });
 });
