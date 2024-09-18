@@ -21,4 +21,20 @@ describe("ceaser-cipher", () => {
     });
     expect(encryptedText).toBe("wklv lv d whvw phvvdjh");
   });
+  test("large-shift", () => {
+    const text = "this is a test message";
+    const shift = 3000;
+
+    const encryptedText = encrypt({
+      text,
+      shift,
+    });
+
+    const decryptedText = decrypt({
+      text: encryptedText,
+      shift,
+    });
+
+    expect(decryptedText).toBe(text);
+  });
 });

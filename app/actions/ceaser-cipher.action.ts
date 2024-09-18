@@ -4,13 +4,14 @@ import {
 } from "../../utils/cipher";
 
 const shiftUnicode = (code: number, shift: number, base: number): number => {
-  return ((code - base - shift + 26) % 26) + base;
+  const normalizedShift = shift % 26;
+  return ((code - base - normalizedShift + 26) % 26) + base;
 };
 
 export const decrypt = ({
-                          text,
-                          shift,
-                        }: {
+  text,
+  shift,
+}: {
   text: string;
   shift: number;
 }): string => {
@@ -28,9 +29,9 @@ export const decrypt = ({
 };
 
 export const encrypt = ({
-                          text,
-                          shift,
-                        }: {
+  text,
+  shift,
+}: {
   text: string;
   shift: number;
 }): string => {
