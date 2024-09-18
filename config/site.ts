@@ -9,8 +9,8 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "Encryption/Decryption",
-      href: "/encrypt-decrypt",
+      label: "Ciphers",
+      href: "/ciphers",
     },
     {
       label: "RSA",
@@ -19,8 +19,8 @@ export const siteConfig = {
   ],
   navMenuItems: [
     {
-      label: "Encryption/Decryption",
-      href: "/encrypt-decrypt",
+      label: "Ciphers",
+      href: "/ciphers",
     },
     {
       label: "RSA",

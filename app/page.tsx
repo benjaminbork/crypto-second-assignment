@@ -109,12 +109,12 @@ export default function Home() {
       <div className='mt-8 flex gap-3'>
 
         <Card className="py-4">
-          <CardHeader className="overflow-visible py-2">
+          <CardHeader className="overflow-visible py-0">
             <Image
-              height={200}
-              radius='none'
-              alt='DOGCRYPT Logo'
-              src='/logo-dogcrypt.png'
+              width={300}
+              height={300}
+              alt='Benjamin Bork'
+              src='/benjamin.jpeg'
             />
           </CardHeader>
           <CardBody className='pb-0 pt-2 px-4 flex-col items-center'>
@@ -131,6 +131,7 @@ export default function Home() {
           <CardHeader className="overflow-visible py-0">
             <Image
               width={300}
+              height={300}
               alt='Danny Kukic'
               src='/danny.jpg'
             />

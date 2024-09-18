@@ -1,4 +1,4 @@
-export default function DocsLayout({
+export default function CiphersLayout({
   children,
 }: {
   children: React.ReactNode;
