@@ -1,101 +1,167 @@
-import Image from "next/image";
+import { subtitle, title } from "@/components/primitives";
+import { PadlockIcon } from "@/components/icons";
+import { Spacer } from "@nextui-org/spacer";
+import { Card, CardBody, CardHeader } from "@nextui-org/card";
+import { Avatar } from "@nextui-org/avatar";
+import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { Image } from "@nextui-org/image";
+import { Divider } from "@nextui-org/divider";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <div className="inline-block max-w-xl text-center justify-center">
+        <h1 className={title()}>Encryption with&nbsp;</h1>
+        <h1 className={title({ color: "cyan" })}>WAU&nbsp;</h1>
+        <Spacer y={6} />
+        <div className="flex items-center justify-center">
+          <PadlockIcon size={60} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <Spacer y={16} />
+
+      <div className="flex gap-3">
+        <Card className="w-[340px]">
+          <CardHeader className="justify-between">
+            <div className="flex gap-5">
+              <Avatar
+                isBordered
+                radius="full"
+                size="md"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/TechCrunch_Disrupt_Europe_Berlin_2013_%2810536888854%29_%28cropped%29.jpg/640px-TechCrunch_Disrupt_Europe_Berlin_2013_%2810536888854%29_%28cropped%29.jpg"
+              />
+              <div className="flex flex-col gap-1 items-start justify-center">
+                <h4 className="text-small font-semibold leading-none text-default-600">
+                  Pavel Durov
+                </h4>
+                <h5 className="text-small tracking-tight text-default-400">
+                  CEO Telegram
+                </h5>
+              </div>
+            </div>
+          </CardHeader>
+          <CardBody className="px-3 text-small text-default-400">
+            <p>
+              You know the interesting thing about encryption is that it cannot
+              be secure just for some people.
+            </p>
+          </CardBody>
+        </Card>
+        <Spacer x={4} />
+        <Card className="w-[340px]">
+          <CardHeader className="justify-between ">
+            <div className="flex gap-5">
+              <Avatar
+                isBordered
+                radius="full"
+                size="md"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/John_McAfee_by_Gage_Skidmore.jpg/1024px-John_McAfee_by_Gage_Skidmore.jpg"
+              />
+              <div className="flex flex-col gap-1 items-start justify-center">
+                <h4 className="text-small font-semibold leading-none text-default-600">
+                  John McAfee
+                </h4>
+                <h5 className="text-small tracking-tight text-default-400">
+                  CEO McAfee
+                </h5>
+              </div>
+            </div>
+          </CardHeader>
+          <CardBody className="px-3 py-0 text-small text-default-400">
+            <p>
+              {`It's very hard to keep an uncrackable encryption if you share it
+              with the government.`}
+            </p>
+          </CardBody>
+        </Card>
+        <Spacer x={4} />
+        <Card className="w-[340px]">
+          <CardHeader className="justify-between">
+            <div className="flex gap-5">
+              <Avatar
+                isBordered
+                radius="full"
+                size="md"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Official_portrait_of_Rt_Hon_Priti_Patel_MP_crop_2.jpg/1280px-Official_portrait_of_Rt_Hon_Priti_Patel_MP_crop_2.jpg"
+              />
+              <div className="flex flex-col gap-1 items-start justify-center">
+                <h4 className="text-small font-semibold leading-none text-default-600">
+                  Priti Patel
+                </h4>
+                <h5 className="text-small tracking-tight text-default-400">
+                  British Politician
+                </h5>
+              </div>
+            </div>
+          </CardHeader>
+          <CardBody className="px-3 py-0 text-small text-default-400">
+            <p>Strong encryption enables commerce and protects us online.</p>
+          </CardBody>
+        </Card>
+      </div>
+
+      <Spacer y={10} />
+
+      <h1 className={title()}>Why us?</h1>
+      <p>
+        <span className="text-inherit text-2xl">Because we are </span>
+        <span className="text-2xl" style={{ color: "cyan" }}>
+          FREE
+        </span>
+        <span className="text-inherit text-2xl">, </span>
+        <span className="text-2xl" style={{ color: "cyan" }}>
+          FAST{" "}
+        </span>
+        <span className="text-inherit text-2xl">and </span>
+        <span className="text-2xl" style={{ color: "cyan" }}>
+          EASY
+        </span>
+      </p>
+
+      <Divider className="mt-14 mb-20" />
+
+      <h1 className={title()}>Our Team</h1>
+
+      <div className="mt-8 flex gap-3">
+        <Card className="py-4">
+          <CardHeader className="overflow-visible py-0">
+            <Image
+              width={300}
+              height={300}
+              alt="Benjamin Bork"
+              src="/benjamin.jpeg"
+            />
+          </CardHeader>
+          <CardBody className="pb-0 pt-2 px-4 flex-col items-center">
+            <h4 className="font-bold text-large">Benjamin Bork</h4>
+            <p className="text-tiny uppercase font-bold">Founder</p>
+            <small className="text-default-500">
+              Coding & Software-engineering
+            </small>
+          </CardBody>
+        </Card>
+
+        <Spacer x={4} />
+
+        <Card className="py-4">
+          <CardHeader className="overflow-visible py-0">
+            <Image
+              width={300}
+              height={300}
+              alt="Danny Kukic"
+              src="/danny.jpg"
+            />
+          </CardHeader>
+          <CardBody className="pb-0 pt-2 px-4 flex-col items-center">
+            <h4 className="font-bold text-large">Danny Kukic</h4>
+            <p className="text-tiny uppercase font-bold">Founder</p>
+            <small className="text-default-500">
+              Coding & Software-engineering
+            </small>
+          </CardBody>
+        </Card>
+      </div>
+    </section>
   );
 }
