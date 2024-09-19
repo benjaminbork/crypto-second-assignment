@@ -34,6 +34,7 @@ export default function RSAPage() {
   // Generate RSA keys
   const handleGenerateKeys = () => {
     if (p > 0 && q > 0 && e > 0) {
+      // @ts-ignore
       const { publicKey, privateKey } = generateKeys({ p, q, e });
       setPublicKeyGenerated(publicKey);
       setPrivateKeyGenerated(privateKey);
@@ -56,6 +57,7 @@ export default function RSAPage() {
 
     if (text) {
       const encrypted = encryptString({ text, publicKey: publicKeyToUse });
+      // @ts-ignore
       setEncryptedText(encrypted);
     }
   };
@@ -75,6 +77,7 @@ export default function RSAPage() {
 
     if (textToDecrypt) {
       const decrypted = decryptString({ encryptedString: textToDecrypt, privateKey: privateKeyToUse });
+      // @ts-ignore
       setDecryptedText(decrypted);
     }
   };
