@@ -18,24 +18,33 @@ export default function CipherPage() {
   const [result, setResult] = useState("");
   const [resultLabel, setResultLabel] = useState("");
 
+  const handleKeyChange = (e: { target: { value: string; }; }) => {
+    const lettersOnly = e.target.value.replace(/[^a-zA-Z]/g, "");
+    setKey(lettersOnly);
+  };
+
   const handleEncrypt = () => {
     let encryptedText = "";
+
     if (cipherType === "caesar") {
       encryptedText = caesarEncrypt({ text, shift });
     } else if (cipherType === "vigenere") {
       encryptedText = vigenereEncrypt({ text, key });
     }
+
     setResult(encryptedText);
     setResultLabel("Encrypted:");
   };
 
   const handleDecrypt = () => {
     let decryptedText = "";
+
     if (cipherType === "caesar") {
       decryptedText = caesarDecrypt({ text, shift });
     } else if (cipherType === "vigenere") {
       decryptedText = vigenereDecrypt({ text, key });
     }
+
     setResult(decryptedText);
     setResultLabel("Decrypted:");
   };
@@ -78,7 +87,7 @@ export default function CipherPage() {
       {cipherType === "vigenere" && (
         <div>
           <Input type="text" label="Key" labelPlacement="outside" value={key}
-                 onChange={(e) => setKey(e.target.value)} />
+                 onChange={handleKeyChange} />
         </div>
       )}
 
@@ -91,7 +100,6 @@ export default function CipherPage() {
           Decrypt
         </Button>
       </div>
-
 
       {result !== "" && (
         <div>
