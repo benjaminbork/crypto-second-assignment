@@ -22,7 +22,8 @@ export const encrypt = ({
   try {
 
     if (!key) {
-      throw new Error("Key must not be empty.");
+      console.error("Key must not be empty.");
+      return text;
     }
 
     let keyIndex = 0;
@@ -58,7 +59,8 @@ export const decrypt = ({
   try {
 
     if (!key) {
-      throw new Error("Key must not be empty.");
+      console.error("Key must not be empty.");
+      return text;
     }
 
     let keyIndex = 0;
