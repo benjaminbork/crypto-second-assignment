@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react'
 import { title } from "@/components/primitives";
 import { generateKeys, encryptString, decryptString } from "@/app/actions/rsa.action";
-import { Input } from '@nextui-org/input'
-import { Spacer } from '@nextui-org/spacer'
-import { Button } from '@nextui-org/button'
-import { Snippet } from '@nextui-org/snippet'
-import {Textarea} from "@nextui-org/input";
+import { Input } from '@nextui-org/input';
+import { Spacer } from '@nextui-org/spacer';
+import { Button } from '@nextui-org/button';
+import { Snippet } from '@nextui-org/snippet';
+import { Textarea } from "@nextui-org/input";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/dropdown";
+
+type PresetKey = 'preset1' | 'preset2' | 'preset3' | 'preset4';
 
 export default function RSAPage() {
   const [p, setP] = useState<number>(0);
@@ -34,8 +37,6 @@ export default function RSAPage() {
       const { publicKey, privateKey } = generateKeys({ p, q, e });
       setPublicKeyGenerated(publicKey);
       setPrivateKeyGenerated(privateKey);
-      //setInputPublicKey(`${publicKey.n},${publicKey.e}`);
-      //setInputPrivateKey(`${privateKey.n},${privateKey.d}`);
     }
   };
 
@@ -78,12 +79,46 @@ export default function RSAPage() {
     }
   };
 
+  const rsaPresets: Record<PresetKey, { p: number; q: number; e: number }> = {
+    preset1: { p: 61, q: 53, e: 17 },
+    preset2: { p: 101, q: 89, e: 3 },
+    preset3: { p: 137, q: 131, e: 65537 },
+    preset4: { p: 1811, q: 1931, e: 65537 }
+  };
+
+  const handlePresetChange = (key: string) => {
+    if (key in rsaPresets) {
+      const selectedPreset = rsaPresets[key as PresetKey];
+      setP(selectedPreset.p);
+      setQ(selectedPreset.q);
+      setE(selectedPreset.e);
+    }
+  };
+
+
   return (
     <div>
       <h1 className={title()}>RSA</h1>
       <Spacer y={8} />
 
-      {/* Inputs for p, q, and e */}
+      <Dropdown>
+        <DropdownTrigger>
+          <Button variant="bordered" className="capitalize">
+            Select Preset
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          aria-label="RSA Presets"
+          onAction={(key) => handlePresetChange(key as string)}
+        >
+          <DropdownItem key="preset1">Preset 1 (p=61, q=53, e=17)</DropdownItem>
+          <DropdownItem key="preset2">Preset 2 (p=101, q=89, e=3)</DropdownItem>
+          <DropdownItem key="preset3">Preset 3 (p=137, q=131, e=65537)</DropdownItem>
+          <DropdownItem key="preset4">Preset 4 (p=1811, q=1931, e=65537)</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+      <Spacer y={4} />
+
       <div className="flex justify-between">
         <Input type="number" label="Prime Number P" labelPlacement="outside"
                value={p.toString()}
@@ -96,19 +131,23 @@ export default function RSAPage() {
                onChange={(e) => setE(Number(e.target.value))} className="m-4" />
         <Spacer y={4} />
       </div>
+
       <Button color="primary" variant="flat" onClick={handleGenerateKeys}>
         Generate Keys
       </Button>
+
       <Spacer y={10} />
 
       {publicKeyGenerated !== null && privateKeyGenerated !== null && (
         <div className='flex items-center justify-center'>
           <p className='mr-2'>Public Key:</p>
-          <Snippet symbol='' size='sm'
-                   className='mr-4'>{`${publicKeyGenerated?.n}, ${publicKeyGenerated?.e}`}</Snippet>
+          <Snippet symbol='' size='sm' className='mr-4'>
+            {`${publicKeyGenerated?.n}, ${publicKeyGenerated?.e}`}
+          </Snippet>
           <p className='mr-2'>Private Key:</p>
-          <Snippet symbol=''
-                   size='sm'>{`${privateKeyGenerated?.n}, ${privateKeyGenerated?.d}`}</Snippet>
+          <Snippet symbol='' size='sm'>
+            {`${privateKeyGenerated?.n}, ${privateKeyGenerated?.d}`}
+          </Snippet>
         </div>
       )}
 
