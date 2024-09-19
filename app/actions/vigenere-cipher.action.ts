@@ -1,7 +1,7 @@
 import {
   checkIsUnicodePartOfAlphabet,
   checkIsUnicodePartOfUpperCaseAlphabet,
-} from "../../utils/cipher";
+} from '@/utils/cipher';
 
 const shiftUnicode = (uniCode: number, shift: number, base: number): number => {
   try {
@@ -20,9 +20,6 @@ export const encrypt = ({
   key: string;
 }): string => {
   try {
-    if (typeof text !== 'string' || typeof key !== 'string') {
-      throw new Error("Invalid input types. Both text and key should be strings.");
-    }
 
     if (!key) {
       throw new Error("Key must not be empty.");
@@ -59,9 +56,6 @@ export const decrypt = ({
   key: string;
 }): string => {
   try {
-    if (typeof text !== 'string' || typeof key !== 'string') {
-      throw new Error("Invalid input types. Both text and key should be strings.");
-    }
 
     if (!key) {
       throw new Error("Key must not be empty.");
