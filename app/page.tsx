@@ -70,8 +70,8 @@ export default function Home() {
           </CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
             <p>
-              It's very hard to keep an uncrackable encryption if you share it
-              with the government.
+              {`It's very hard to keep an uncrackable encryption if you share it
+              with the government.`}
             </p>
           </CardBody>
         </Card>
