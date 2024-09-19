@@ -21,16 +21,21 @@ export function generateKeys({
 }
 
 export function decKey({ e, fi }: { e: number; fi: number }): number {
-  let i = 2;
-  while (i < 1000) {
-    const formula = (1 + fi * i) % e;
-    const d = Math.floor((1 + fi * i) / e);
-    if (formula === 0 && d !== e) {
-      return d;
-    }
-    i++;
+  const gcdResult = extendedEuclideanAlgorithm(e, fi);
+  const d = gcdResult.x % fi; // Modular inverse
+
+  return d < 0 ? d + fi : d;
+}
+
+function extendedEuclideanAlgorithm(a: number, b: number): { gcd: number, x: number, y: number } {
+  let x0 = 1, x1 = 0, y0 = 0, y1 = 1;
+  while (b !== 0) {
+    const q = Math.floor(a / b);
+    [a, b] = [b, a % b];
+    [x0, x1] = [x1, x0 - q * x1];
+    [y0, y1] = [y1, y0 - q * y1];
   }
-  throw new Error("No valid key found");
+  return { gcd: a, x: x0, y: y0 };
 }
 
 export function encryptString({
@@ -86,5 +91,20 @@ export function decrypt({
   privateKey: { n: number; d: number };
 }): bigint {
   const { n, d } = privateKey;
-  return val ** BigInt(d) % BigInt(n);
+  return modularExponentiation(val, BigInt(d), BigInt(n));
+}
+
+function modularExponentiation(base: bigint, exponent: bigint, modulus: bigint): bigint {
+  let result = BigInt(1);
+  let baseMod = base % modulus;
+
+  while (exponent > 0) {
+    if (exponent % 2n === 1n) {
+      result = (result * baseMod) % modulus;
+    }
+    exponent = exponent >> 1n;
+    baseMod = (baseMod * baseMod) % modulus;
+  }
+
+  return result;
 }
