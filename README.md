@@ -1,10 +1,32 @@
-# Next.js & NextUI Template
+# DogCrypt
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+DogCrypt is a service for encryption with either the caesar cipher and vigenere ciper or the RSA.
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+The App is accessable on [DogCrypt](https://crypto-second-assignment.vercel.app)
 
-## Technologies Used
+## How to Use
+
+### Fast Way (Recommended)
+
+The fastest and easiest way to use it, is on the provided link [DogCrypt](https://crypto-second-assignment.vercel.app)
+
+### Another Way (Developer environment)
+
+Another way to try it out would be the Next development environment. This is not recommended for use and may lack performance!
+
+Install dependencies:
+You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+```bash
+npm install
+```
+
+Run the development server
+
+```bash
+npm run dev
+```
+
+## Technologies Used for Frontend
 
 - [Next.js 14](https://nextjs.org/docs/getting-started)
 - [NextUI v2](https://nextui.org/)
@@ -14,39 +36,6 @@ This is a template for creating applications using Next.js 14 (app directory) an
 - [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 
-## How to Use
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
 ## License
 
